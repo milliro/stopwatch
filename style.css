@@ -1,0 +1,74 @@
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  min-height: 100vh;
+  background: #222;
+}
+
+main {
+  max-width: 450px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center ;
+  color: #fff;
+}
+
+h1 {
+  font-size: 3.5rem;
+  margin: 20px;
+}
+
+.container-cronometro {
+  font-size: 3rem;
+}
+
+.container-btn {
+  display: flex;
+  gap: 20px;
+  margin: 20px 0;
+}
+
+.btn {
+  display: block;
+  padding: 20px 40px;
+  font-size: 1.4rem;
+  border: none;
+}
+
+.init {
+  background: #00A892;
+}
+
+.init.active {
+  display: none;
+}
+
+.reset {
+  background: #F26122;
+}
+
+.pause {
+  display: none;
+  background: #9CF4E8;
+}
+
+.pause.active {
+  display: block;
+}
+
+.btn:active {
+  transform: scale(.95);
+  -webkit-transform: scale(.95);
+  -moz-transform: scale(.95);
+  -ms-transform: scale(.95);
+  -o-transform: scale(.95);
+}
