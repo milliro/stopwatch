@@ -1,3 +1,5 @@
+@import url(//db.onlinewebfonts.com/c/84cb021d5f9af287ffff84b61beef6dc?family=clockicons);
+
 * {
   margin: 0;
   padding: 0;
@@ -9,27 +11,26 @@ body {
   flex-direction: column;
   justify-content: center;
   align-items: center;
+  font-family: sans-serif;
   min-height: 100vh;
-  background: #222;
+  background: #000;
 }
 
 main {
-  max-width: 450px;
+  max-width: 500px;
   display: flex;
   flex-direction: column;
   align-items: center;
-  justify-content: center ;
-  color: #fff;
+  justify-content: center;
 }
 
-h1 {
-  font-size: 3.5rem;
-  margin: 20px;
+.container-timer {
+  font-size: 6rem;
+  font-family: clockicons, sans-serif;
+  color: #FF9500!important;
+  margin: 20px 0;
 }
 
-.container-cronometro {
-  font-size: 3rem;
-}
 
 .container-btn {
   display: flex;
@@ -38,31 +39,57 @@ h1 {
 }
 
 .btn {
+  width: 150px;
   display: block;
-  padding: 20px 40px;
+  padding: 1rem 2rem;
   font-size: 1.4rem;
   border: none;
+  border-radius: 20px;
+  -webkit-border-radius: 20px;
+  -moz-border-radius: 20px;
+  -ms-border-radius: 20px;
+  -o-border-radius: 20px;
 }
 
 .init {
-  background: #00A892;
+  background: #0DEADD;
+  opacity: 1;
+  transition: .2s;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  visibility: visible;
+  position: relative;
 }
 
 .init.active {
-  display: none;
+  opacity: 0;
+  visibility: hidden;
+  position: absolute;
 }
 
 .reset {
-  background: #F26122;
+  background: #FF530D;
 }
 
-.pause {
-  display: none;
-  background: #9CF4E8;
+.stop {
+  background: #DDEB02;
+  opacity: 0;
+  transition: .2s;
+  -webkit-transition: .2s;
+  -moz-transition: .2s;
+  -ms-transition: .2s;
+  -o-transition: .2s;
+  visibility: hidden;
+  position: absolute;
 }
 
-.pause.active {
+.stop.active {
+  opacity: 1;
   display: block;
+  visibility: visible;
+  position: relative;
 }
 
 .btn:active {
@@ -71,4 +98,16 @@ h1 {
   -moz-transform: scale(.95);
   -ms-transform: scale(.95);
   -o-transform: scale(.95);
+}
+
+@media (max-width: 549px) {
+  .container-timer {
+    font-size: 3rem;
+  }
+
+  .btn {
+    width: 130px;
+    padding: .8rem 1.8rem;
+    font-size: 1.2rem;
+  }
 }

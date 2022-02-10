@@ -1,31 +1,77 @@
 const msSpan = document.querySelector('#ms')
 const secondsSpan = document.querySelector('#seconds')
 const minutesSpan = document.querySelector('#minutes')
+
 const initButton = document.querySelector('.init')
 const resetButton = document.querySelector('.reset')
-const pauseButton = document.querySelector('.pause')
+const stopButton = document.querySelector('.stop')
 
 let ms = 0
 let seconds = 0
 let minutes = 0
+let cron
 
-const msFunction = () => {
+const insertHTML = () => {
+  const formatMs = ms < 10 ? `0${ms}`: ms
+  const formatSec = seconds < 10 ? `0${seconds}` : seconds
+  const formatMin = minutes < 10 ? `0${minutes}`: minutes
+
+  msSpan.innerHTML = formatMs
+  secondsSpan.innerHTML = formatSec
+  minutesSpan.innerHTML = formatMin
+}
+
+const timer = () => {
   ms++
-  ms === 99 ? ms = 0 : 0
-  ms < 10 ? msSpan.innerHTML = `0${ms}` : msSpan.innerHTML = ms
+  if (ms === 99) {
+    seconds ++ 
+    ms = 0
+  }
+
+  if (seconds === 59) {
+    minutes++
+    seconds = 0
+  }
+
+  if (minutes === 60) {
+    initButton.classList.remove('active')
+    stopButton.classList.remove('active')
+    reset()
+  }
+  insertHTML()
 }
 
-const secFunction = () => {
-  seconds++
-  seconds < 10 ? secondsSpan.innerHTML = `0${seconds}` : secondsSpan.innerHTML = seconds
-  seconds === 59 ? seconds = 0 : 0
+const init = () => {
+  cron = setInterval(timer, 10)
 }
 
-const minFunction = () => {
-  minutes++
-  minutes < 10 ? minutesSpan.innerHTML = `0${minutes}` : minutesSpan.innerHTML = minutes
-  minutes === 60 ? minutes = 0 : 0
+const stop = () => {
+  clearInterval(cron)
 }
 
+const reset = () => {
+  clearInterval(cron)
+  ms = 0
+  seconds = 0
+  minutes = 0
+  insertHTML()
+}
 
-initButton.addEventListener('click', () => timer.init())
+initButton.addEventListener('click', () => {
+  initButton.classList.add('active')
+  stopButton.classList.add('active')
+  init()
+})
+
+stopButton.addEventListener('click', () => {
+  initButton.classList.remove('active')
+  stopButton.classList.remove('active')
+  stop()
+})
+
+
+resetButton.addEventListener('click', () => {
+  initButton.classList.remove('active')
+  stopButton.classList.remove('active')
+  reset()
+})
