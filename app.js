@@ -21,7 +21,7 @@ const insertHTML = () => {
   minutesSpan.innerHTML = formatMin
 }
 
-const timer = () => {
+const stopwatch = () => {
   ms++
   if (ms === 99) {
     seconds ++ 
@@ -42,7 +42,7 @@ const timer = () => {
 }
 
 const init = () => {
-  cron = setInterval(timer, 10)
+  cron = setInterval(stopwatch, 10)
 }
 
 const stop = () => {
