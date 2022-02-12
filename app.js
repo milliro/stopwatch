@@ -42,6 +42,7 @@ const stopwatch = () => {
 }
 
 const init = () => {
+  clearInterval(cron)
   cron = setInterval(stopwatch, 10)
 }
 
